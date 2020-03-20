@@ -1,0 +1,441 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Azure",
+        "description": "API for dev.azure.com",
+        "version": "1.0.0"
+    },
+    "host": "dev.azure.com",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/nestle-it/nestle-k2/_apis/wit/workitems/{id}?api-version=5.1": {
+            "get": {
+                "tags": [
+                    "Nestle_it"
+                ],
+                "description": "getWorkItemById",
+                "operationId": "getWorkItemById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the work item to get",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/WorkItem"
+                        }
+                    }
+                },
+                "security": []
+            },
+            "patch": {
+                "tags": [
+                    "Nestle_it"
+                ],
+                "description": "updateWorkItemById",
+                "operationId": "updateWorkItemById",
+                "consumes": [
+                    "application/json-patch+json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "The JSON Patch document representing the update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/JsonPatchDocument"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id of the work item to update",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "query",
+                        "name": "validateOnly",
+                        "description": "Indicate if you only want to validate the changes without saving the work item",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "in": "query",
+                        "name": "bypassRules",
+                        "description": "Do not enforce the work item type rules on this update",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "in": "query",
+                        "name": "suppressNotifications",
+                        "description": "Do not fire any notifications for this change",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/WorkItem"
+                        }
+                    }
+                },
+                "security": []
+            }
+        }
+    },
+    "definitions": {
+        "WorkItem": {
+            "description": "Model for WorkItem",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "rev": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "fields": {
+                    "$ref": "#/definitions/Fields"
+                },
+                "_links": {
+                    "$ref": "#/definitions/Links3"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Fields2": {
+            "description": "Model for Fields2",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "WorkItemType": {
+            "description": "Model for WorkItemType",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "Html": {
+            "description": "Model for Html",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "WorkItemComments": {
+            "description": "Model for WorkItemComments",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "Links3": {
+            "description": "Model for Links3",
+            "required": [
+                "fields"
+            ],
+            "properties": {
+                "fields": {
+                    "$ref": "#/definitions/Fields2"
+                },
+                "html": {
+                    "$ref": "#/definitions/Html"
+                },
+                "self": {
+                    "$ref": "#/definitions/Self"
+                },
+                "workItemComments": {
+                    "$ref": "#/definitions/WorkItemComments"
+                },
+                "workItemRevisions": {
+                    "$ref": "#/definitions/WorkItemRevisions"
+                },
+                "workItemType": {
+                    "$ref": "#/definitions/WorkItemType"
+                },
+                "workItemUpdates": {
+                    "$ref": "#/definitions/WorkItemUpdates"
+                }
+            }
+        },
+        "WorkItemRevisions": {
+            "description": "Model for WorkItemRevisions",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "WorkItemUpdates": {
+            "description": "Model for WorkItemUpdates",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "Self": {
+            "description": "Model for Self",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "Fields": {
+            "description": "Model for Fields",
+            "properties": {
+                "System.AreaPath": {
+                    "type": "string"
+                },
+                "System.TeamProject": {
+                    "type": "string"
+                },
+                "System.IterationPath": {
+                    "type": "string"
+                },
+                "System.WorkItemType": {
+                    "type": "string"
+                },
+                "System.State": {
+                    "type": "string"
+                },
+                "System.Reason": {
+                    "type": "string"
+                },
+                "System.CreatedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "System.CreatedBy": {
+                    "$ref": "#/definitions/SystemCreatedBy"
+                },
+                "System.ChangedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "System.ChangedBy": {
+                    "$ref": "#/definitions/SystemChangedBy"
+                },
+                "System.CommentCount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "x-example": "0"
+                },
+                "System.Title": {
+                    "type": "string"
+                },
+                "System.BoardColumn": {
+                    "type": "string",
+                    "x-example": "New"
+                },
+                "System.BoardColumnDone": {
+                    "type": "boolean",
+                    "x-example": "false"
+                },
+                "Microsoft.VSTS.Common.StateChangeDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "Microsoft.VSTS.Common.Priority": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "Microsoft.VSTS.Common.StackRank": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "Microsoft.VSTS.Common.ValueArea": {
+                    "type": "string"
+                },
+                "WEF_131FD6EEB22441D99D38486C07F5E4A0_Kanban.Column": {
+                    "type": "string"
+                },
+                "WEF_131FD6EEB22441D99D38486C07F5E4A0_Kanban.Column.Done": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Avatar2": {
+            "description": "Model for Avatar2",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "Links2": {
+            "description": "Model for Links2",
+            "required": [
+                "avatar"
+            ],
+            "properties": {
+                "avatar": {
+                    "$ref": "#/definitions/Avatar2"
+                }
+            }
+        },
+        "SystemChangedBy": {
+            "description": "Model for SystemChangedBy",
+            "required": [
+                "descriptor"
+            ],
+            "properties": {
+                "descriptor": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "_links": {
+                    "$ref": "#/definitions/Links2"
+                },
+                "uniqueName": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "SystemCreatedBy": {
+            "description": "Model for SystemCreatedBy",
+            "required": [
+                "descriptor"
+            ],
+            "properties": {
+                "descriptor": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "_links": {
+                    "$ref": "#/definitions/Links"
+                },
+                "uniqueName": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Links": {
+            "description": "Model for Links",
+            "required": [
+                "avatar"
+            ],
+            "properties": {
+                "avatar": {
+                    "$ref": "#/definitions/Avatar"
+                }
+            }
+        },
+        "Avatar": {
+            "description": "Model for Avatar",
+            "required": [
+                "href"
+            ],
+            "properties": {
+                "href": {
+                    "type": "string"
+                }
+            }
+        },
+        "JsonPatchDocument": {
+            "description": "The JSON model for JSON Patch Operations",
+            "properties": {
+                "from": {
+                    "description": "The path to copy from for the Move/Copy operation.",
+                    "type": "string"
+                },
+                "op": {
+                    "description": "The patch operation: add, remove, replace, move, copy, test",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "The path for the operation. In the case of an array, a zero based index can be used to specify the position in the array (e.g. /biscuits/0/name). The \"-\" character can be used instead of an index to insert at the end of the array (e.g. /biscuits/-).",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value for the operation. This is either a primitive or a JToken.",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {},
+    "security": [],
+    "tags": [
+        {
+            "name": "Nestle_it",
+            "description": "Operations about Nestle_it"
+        }
+    ]
+}
