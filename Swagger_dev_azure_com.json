@@ -59,7 +59,9 @@
                         "required": true,
                         "schema": {
                             "type": "array",
-                            "$ref": "#/definitions/JsonPatchDocument"
+                            "items": {
+                                "$ref": "#/definitions/JsonPatchDocument"
+                            }
                         }
                     },
                     {
