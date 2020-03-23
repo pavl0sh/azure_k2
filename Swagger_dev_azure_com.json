@@ -45,9 +45,6 @@
                 ],
                 "description": "updateWorkItemById",
                 "operationId": "updateWorkItemById",
-                "consumes": [
-                    "application/json-patch+json"
-                ],
                 "produces": [
                     "application/json"
                 ],
