@@ -55,10 +55,7 @@
                         "description": "The JSON Patch document representing the update",
                         "required": true,
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/JsonPatchDocument"
-                            }
+                            "$ref": "#/definitions/JsonPatchDocument"
                         }
                     },
                     {
@@ -409,6 +406,13 @@
             }
         },
         "JsonPatchDocument": {
+            "description": "The JSON model for a JSON Patch operation",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/JsonPatchOperation"
+            }
+        },
+        "JsonPatchOperation": {
             "description": "The JSON model for a JSON Patch operation",
             "type": "object",
             "properties": {
